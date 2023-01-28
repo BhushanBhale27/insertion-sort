@@ -1,0 +1,54 @@
+'use strict';
+
+process.stdin.setEncoding('utf-8');
+
+/**
+ * @param {number[]} arr
+ * @param {number} length
+ * @return {number[]}
+ */
+function sort_array(arr,length){
+/*Function to sort the array in ascending order
+After sorting return the sorted array */
+
+for(var i=1;i<arr.length;i++){
+    var current = arr[i]
+    var j=i-1
+    while(j>=0 && arr[j]>current){
+        arr[j+1]=arr[j]
+        j--;
+    }
+    arr[j+1]=current;
+}
+return arr;
+    
+    
+    
+    
+}
+
+//Dont change anything below. If changed click on reset.
+async function readInput() {
+        let inputString = '';
+        var output=[];
+        var input=[];
+        process.stdin.on('data', inputStdin => {
+            inputString += inputStdin;
+            const inputArr = inputString.split(/(?:\r\n|\r|\n)/g)
+            var length=parseInt(inputArr[0]);
+            for(var i =0;i<length;i++)
+            {
+                input[i]=parseInt(inputArr[i+1]);
+            }
+            output = sort_array(input,length)
+            for(var i=0;i<output.length;i++)
+            {
+                console.log(output[i]);
+            }   
+            process.exit();
+            
+        })
+        
+
+}
+readInput();
